@@ -17,3 +17,8 @@ Install a package:
 Uninstall a package:
 
     sudo deb -r i3blocks
+
+SEE ALSO
+--------
+
++ https://github.com/vivien/i3blocks
