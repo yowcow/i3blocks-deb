@@ -1,0 +1,6 @@
+Package: i3blocks
+Version: {{PKG_VER}}
+Architecture: {{ARCH}}
+Maintainer: Yoko OYAMA <yowcow@gmail.com>
+Depends: i3
+Description: An i3blocks deb package.
