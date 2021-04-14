@@ -19,3 +19,7 @@ jobs:
         run: sudo apt-get install -yq build-essential curl autoconf pkg-config
       - name: build a deb package
         run: make all build
+      - uses: actions/upload-artifact@v2
+        with:
+          name: i3blocks deb package
+          path: i3blocks_1.5-1_amd64.deb
