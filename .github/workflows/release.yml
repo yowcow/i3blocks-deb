@@ -1,25 +1,26 @@
-name: CI
+name: release
 
 on:
   push:
     tags:
       - '*'
 
-  workflow_dispatch:
-
 jobs:
-  build:
+  release:
     runs-on: ubuntu-latest
-
     steps:
-      - uses: actions/checkout@v2
+      - name: checkout
+        uses: actions/checkout@v2
       - name: update apt
         run: sudo apt-get update
       - name: install packages
         run: sudo apt-get install -yq build-essential curl autoconf pkg-config
       - name: build a deb package
         run: make all build
-      - uses: actions/upload-artifact@v2
+      - name: upload artifact
+        uses: softprops/action-gh-release@v1
         with:
-          name: i3blocks deb package
-          path: i3blocks_1.5-1_amd64.deb
+          files: |
+            i3blocks_*.deb
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
