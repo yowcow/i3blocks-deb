@@ -6,6 +6,11 @@ i3blocks deb package
 HOW TO USE
 ----------
 
+Download and install an `i3blocks_*.deb` package from: https://github.com/yowcow/i3blocks-deb/releases
+
+HOW TO BUILD
+------------
+
 To create a deb package:
 
     make all build
@@ -18,8 +23,7 @@ To uninstall a package:
 
     sudo deb -r i3blocks
 
-DOCKER
-------
+### DOCKER
 
 To create a package within a docker container, do:
 
