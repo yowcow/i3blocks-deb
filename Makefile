@@ -24,9 +24,9 @@ build:
 build-src: i3blocks_$(VERSION)
 	cd $< && \
 		./autogen.sh && \
-		./configure --prefix=$(abspath $</../$(ARTIFACT)/usr) && \
+		./configure --prefix=$(abspath $(ARTIFACT)/usr) && \
 		make && \
-		make BASH_COMPLETION_DIR=$(abspath $</../$(ARTIFACT)/usr/share/bash-completion/completions) sysconfdir=$(abspath $</../$(ARTIFACT)/etc) install
+		make BASH_COMPLETION_DIR=$(abspath $(ARTIFACT)/usr/share/bash-completion/completions) sysconfdir=$(abspath $(ARTIFACT)/etc) install
 
 i3blocks_$(VERSION): i3blocks_$(VERSION).tar.gz
 	mkdir -p $@
