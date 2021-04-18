@@ -7,6 +7,8 @@ URL := https://github.com/vivien/i3blocks
 PKGSOURCE := $(URL)/archive/refs/tags/$(PKGVERSION).tar.gz
 SOURCEDIR := $(PKGNAME)_$(PKGVERSION)
 
+$(ARTIFACT) := $(PKGNAME)_$(PKGVERSION)-$(PKGRELEASE)_$(ARCH).deb
+
 all: $(SOURCEDIR)
 	cd $< && \
 		./autogen.sh && \
@@ -22,10 +24,10 @@ $(SOURCEDIR): $(SOURCEDIR).tar.gz
 
 build: $(PKGNAME)_$(PKGVERSION)-$(PKGRELEASE)_$(ARCH).deb
 
-$(PKGNAME)_$(PKGVERSION)-$(PKGRELEASE)_$(ARCH).deb: $(SOURCEDIR)/$(PKGNAME)_$(PKGVERSION)-$(PKGRELEASE)_$(ARCH).deb
+$(ARTIFACT): $(SOURCEDIR)/$(ARTIFACT)
 	mv $< $@
 
-$(SOURCEDIR)/$(PKGNAME)_$(PKGVERSION)-$(PKGRELEASE)_$(ARCH).deb:
+$(SOURCEDIR)/$(ARTIFACT):
 	cd $(dir $@) && \
 		checkinstall \
 			-D \
@@ -46,4 +48,4 @@ clean:
 realclean: clean
 	rm -rf *.tar.gz *.deb
 
-.PHONY: all build clean
+.PHONY: all build clean realclean
