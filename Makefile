@@ -1,13 +1,13 @@
-PKGNAME:= i3blocks
+PKGNAME := yowcow-i3blocks
 PKGVERSION := 1.5
-PKGRELEASE := 2
+PKGRELEASE := 3
 ARCH := amd64
 
 URL := https://github.com/vivien/i3blocks
 PKGSOURCE := $(URL)/archive/refs/tags/$(PKGVERSION).tar.gz
 SOURCEDIR := $(PKGNAME)_$(PKGVERSION)
 
-$(ARTIFACT) := $(PKGNAME)_$(PKGVERSION)-$(PKGRELEASE)_$(ARCH).deb
+ARTIFACT := $(PKGNAME)_$(PKGVERSION)-$(PKGRELEASE)_$(ARCH).deb
 
 all: $(SOURCEDIR)
 	cd $< && \
@@ -22,7 +22,7 @@ $(SOURCEDIR): $(SOURCEDIR).tar.gz
 %.tar.gz:
 	curl -L $(PKGSOURCE) -o $@
 
-build: $(PKGNAME)_$(PKGVERSION)-$(PKGRELEASE)_$(ARCH).deb
+build: $(ARTIFACT)
 
 $(ARTIFACT): $(SOURCEDIR)/$(ARTIFACT)
 	mv $< $@
@@ -39,6 +39,7 @@ $(SOURCEDIR)/$(ARTIFACT):
 			--arch $(ARCH) \
 			--pkgsource $(URL) \
 			--recommends i3 \
+			--conflicts i3blocks \
 			-y \
 			make BASH_COMPLETION_DIR=/usr/share/bash-completion/completions sysconfdir=/etc install
 
