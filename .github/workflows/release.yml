@@ -23,6 +23,6 @@ jobs:
         uses: softprops/action-gh-release@v1
         with:
           files: |
-            i3blocks_*.deb
+            yowcow-i3blocks_*.deb
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
