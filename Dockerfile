@@ -8,4 +8,5 @@ RUN set -eux; \
         build-essential \
         curl \
         autoconf \
-        pkg-config
+        pkg-config \
+        checkinstall

@@ -1,4 +1,4 @@
-IMAGE := yowcow/ubuntu
+IMAGE := yowcow/ubuntu-i3blocks
 
 all:
 	docker build -t $(IMAGE) .
